@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import uuid from 'uuid/v4';
 
 
 const Formulario = () => {
@@ -36,9 +37,11 @@ const Formulario = () => {
             return;
         }
 
+        // Eliminar mensaje previo
+        actualizarError(false);
+
         // asignar un ID
-
-
+        cita.id = uuid();
         // Crear la cita
 
 
