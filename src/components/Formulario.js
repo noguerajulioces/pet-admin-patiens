@@ -12,6 +12,9 @@ const Formulario = () => {
         sintomas: ''
     });
 
+    // Crear state de validación
+    const [error, actualizarError] = useState(false);
+
     // Función que se ejecuta al escribir en un input
     const actualizarState = e => {
         actualizarCita({
@@ -28,7 +31,10 @@ const Formulario = () => {
         e.preventDefault();
 
         //Validar
-
+        if(mascota.trim() === '' || dueño.trim() === '' || fecha.trim() === ''|| hora.trim() === '' || sintomas.trim() === ''){
+            actualizarError(true);
+            return;
+        }
 
         // asignar un ID
 
@@ -37,13 +43,15 @@ const Formulario = () => {
 
 
         // Reiniciar el form
-        
+
         console.log("ENviando form")
     }
 
     return (
         <>
             <h2> Crear Cita</h2>
+
+            { error ? <p className="alert alert-danger"> Todos los campos son obligatorios</p> : null }
 
             <form
                 onSubmit={submitCita}
