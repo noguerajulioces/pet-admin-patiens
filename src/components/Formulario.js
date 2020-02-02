@@ -6,17 +6,22 @@ const Formulario = () => {
     // Crear State de Citas
     const [cita, actualizarCita] = useState({
         mascota: '',
-        propietario: '',
+        dueño: '',
         fecha: '',
         hora: '',
         sintomas: ''
     });
 
     // Función que se ejecuta al escribir en un input
-
-    const actualizarState = () => {
-        console.log("escirbiendo");
+    const actualizarState = e => {
+        actualizarCita({
+            ...cita,
+            [e.target.name]: e.target.value 
+        })
     }
+
+    //extraer los valores
+    const { mascota, dueño, fecha, hora, sintomas} = cita;
 
     return (
         <>
@@ -31,6 +36,7 @@ const Formulario = () => {
                         className="form-control"
                         placeholder="Nombre Mascota"
                         onChange={actualizarState}
+                        value={mascota}
                     />
                 </div>
 
@@ -42,6 +48,7 @@ const Formulario = () => {
                         className="form-control"
                         placeholder="Nombre dueño de mascota"
                         onChange={actualizarState}
+                        value={dueño}
                     />
                 </div>
 
@@ -52,6 +59,7 @@ const Formulario = () => {
                         name="fecha"
                         className="form-control"
                         onChange={actualizarState}
+                        value={fecha}
                     />
                 </div>
 
@@ -62,6 +70,7 @@ const Formulario = () => {
                         name="hora"
                         className="form-control"
                         onChange={actualizarState}
+                        value={hora}
                     />
                 </div>
 
@@ -71,6 +80,7 @@ const Formulario = () => {
                         className="form-control"
                         name="sintomas"    
                         onChange={actualizarState}
+                        value={sintomas}
                     ></textarea>
                 </div>
 
